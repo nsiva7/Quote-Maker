@@ -4,6 +4,7 @@
     android:id="@+id/clRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
@@ -20,7 +21,7 @@
 
     <ImageView
         android:id="@+id/ivBack"
-        android:layout_width="@dimen/_30sdp"
+        android:layout_width="@dimen/_20sdp"
         android:layout_height="@dimen/_30sdp"
         android:layout_margin="@dimen/_2sdp"
         android:padding="@dimen/_5sdp"
@@ -49,18 +50,136 @@
         app:srcCompat="@drawable/ic_camera" />
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvTools"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clTools"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:padding="@dimen/_5sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/row_editing_tools" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/ivBrush"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            app:layout_constraintEnd_toStartOf="@+id/ivText"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_brush" />
+
+        <ImageView
+            android:id="@+id/ivText"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            app:layout_constraintEnd_toStartOf="@+id/ivEraser"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/ivBrush"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_text" />
+
+        <ImageView
+            android:id="@+id/ivEraser"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            app:layout_constraintEnd_toStartOf="@+id/ivFilter"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/ivText"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_eraser" />
+
+        <ImageView
+            android:id="@+id/ivFilter"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            app:layout_constraintEnd_toStartOf="@+id/ivEmoji"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/ivEraser"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_photo_filter" />
+
+        <ImageView
+            android:id="@+id/ivEmoji"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            app:layout_constraintEnd_toStartOf="@+id/ivSticker"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/ivFilter"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_insert_emoticon" />
+
+        <ImageView
+            android:id="@+id/ivSticker"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/ivEmoji"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_sticker" />
+
+        <TextView
+            android:id="@+id/tvBrush"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_brush"
+            android:textColor="@color/tool_bg"
+            app:layout_constraintEnd_toEndOf="@+id/ivBrush"
+            app:layout_constraintStart_toStartOf="@+id/ivBrush"
+            app:layout_constraintTop_toBottomOf="@+id/ivBrush" />
+
+        <TextView
+            android:id="@+id/tvText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_text"
+            android:textColor="@color/tool_bg"
+            app:layout_constraintEnd_toEndOf="@+id/ivText"
+            app:layout_constraintStart_toStartOf="@+id/ivText"
+            app:layout_constraintTop_toBottomOf="@+id/ivText" />
+
+        <TextView
+            android:id="@+id/tvEraser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_eraser"
+            android:textColor="@color/tool_bg"
+            app:layout_constraintEnd_toEndOf="@+id/ivEraser"
+            app:layout_constraintStart_toStartOf="@+id/ivEraser"
+            app:layout_constraintTop_toBottomOf="@+id/ivEraser" />
+
+        <TextView
+            android:id="@+id/tvFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_filter"
+            android:textColor="@color/tool_bg"
+            app:layout_constraintEnd_toEndOf="@+id/ivFilter"
+            app:layout_constraintStart_toStartOf="@+id/ivFilter"
+            app:layout_constraintTop_toBottomOf="@+id/ivFilter" />
+
+        <TextView
+            android:id="@+id/tvEmoji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_emoji"
+            android:textColor="@color/tool_bg"
+            app:layout_constraintEnd_toEndOf="@+id/ivEmoji"
+            app:layout_constraintStart_toStartOf="@+id/ivEmoji"
+            app:layout_constraintTop_toBottomOf="@+id/ivEmoji" />
+
+        <TextView
+            android:id="@+id/tvSticker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_sticker"
+            android:textColor="@color/tool_bg"
+            app:layout_constraintEnd_toEndOf="@+id/ivSticker"
+            app:layout_constraintStart_toStartOf="@+id/ivSticker"
+            app:layout_constraintTop_toBottomOf="@+id/ivSticker" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFilters"
@@ -69,9 +188,9 @@
         android:background="@color/tool_bg"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="@+id/rvTools"
+        app:layout_constraintBottom_toBottomOf="@+id/clTools"
         app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/rvTools"
+        app:layout_constraintTop_toTopOf="@+id/clTools"
         tools:listitem="@layout/row_filter_view" />
 
     <ja.burhanrashid52.photoeditor.PhotoEditorView
@@ -89,7 +208,7 @@
         android:layout_height="@dimen/_30sdp"
         android:layout_margin="@dimen/_2sdp"
         android:padding="@dimen/_5sdp"
-        app:layout_constraintBottom_toTopOf="@+id/rvTools"
+        app:layout_constraintBottom_toTopOf="@+id/clTools"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_redo" />
 
@@ -99,7 +218,7 @@
         android:layout_height="@dimen/_30sdp"
         android:layout_margin="@dimen/_2sdp"
         android:padding="@dimen/_5sdp"
-        app:layout_constraintBottom_toTopOf="@+id/rvTools"
+        app:layout_constraintBottom_toTopOf="@+id/clTools"
         app:layout_constraintEnd_toStartOf="@+id/ivRedo"
         app:srcCompat="@drawable/ic_undo" />
 
@@ -109,7 +228,7 @@
         android:layout_height="@dimen/_30sdp"
         android:layout_margin="@dimen/_2sdp"
         android:padding="@dimen/_5sdp"
-        app:layout_constraintBottom_toTopOf="@+id/rvTools"
+        app:layout_constraintBottom_toTopOf="@+id/clTools"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_clear" />
 
@@ -119,7 +238,7 @@
         android:layout_height="@dimen/_30sdp"
         android:layout_margin="@dimen/_2sdp"
         android:padding="@dimen/_5sdp"
-        app:layout_constraintBottom_toTopOf="@+id/rvTools"
+        app:layout_constraintBottom_toTopOf="@+id/clTools"
         app:layout_constraintStart_toEndOf="@+id/ivClear"
         app:srcCompat="@drawable/ic_download" />
 
@@ -129,7 +248,7 @@
         android:layout_height="@dimen/_30sdp"
         android:layout_margin="@dimen/_2sdp"
         android:padding="@dimen/_5sdp"
-        app:layout_constraintBottom_toTopOf="@+id/rvTools"
+        app:layout_constraintBottom_toTopOf="@+id/clTools"
         app:layout_constraintStart_toEndOf="@+id/ivSave"
         app:srcCompat="@drawable/ic_share" />
 

@@ -7,6 +7,7 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.setMargins
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -48,6 +49,10 @@ class SavedQuotes : AppCompatActivity() {
                 }
 
                 override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+                    val params = ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+                    params.setMargins(20)
+                    holder.itemView.layoutParams = params
+
                     holder.itemView.setOnClickListener {
                         val openImageIntent = Intent(Intent.ACTION_VIEW)
                         openImageIntent.setDataAndType(Util.buildFileProviderUri(this@SavedQuotes, quotes!![position]), "image/*")

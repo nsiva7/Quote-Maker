@@ -82,63 +82,55 @@ class Editor : AppCompatActivity(), OnPhotoEditorListener {
     }
 
     private fun initTools() {
-        rvTools.layoutManager = LinearLayoutManager(applicationContext, RecyclerView.HORIZONTAL, false)
-        rvTools.adapter = EditingToolsAdapter(object : ToolSelectedListener {
-            override fun onToolSelected(toolType: ToolType) {
-                when (toolType) {
-                    ToolType.BRUSH -> {
-                        photoEditor.setBrushDrawingMode(true)
-                        tvTitle.setText(R.string.label_brush)
-                        PropertiesBSDF(object : PropertyListener {
-                            override fun onColorChanged(color: Int) {
-                                photoEditor.brushColor = color
-                                tvTitle.setText(R.string.label_brush)
-                            }
-
-                            override fun onOpacityChanged(opacity: Int) {
-                                photoEditor.setOpacity(opacity)
-                                tvTitle.setText(R.string.label_brush)
-                            }
-
-                            override fun onBrushSizeChanged(brushSize: Int) {
-                                photoEditor.brushSize = brushSize.toFloat()
-                                tvTitle.setText(R.string.label_brush)
-                            }
-                        }).show(supportFragmentManager, "")
-                    }
-                    ToolType.TEXT -> {
-                        TextEditorD(object : TextEditorListener {
-                            override fun onTextDone(input: String, color: Int) {
-                                val textStyle = TextStyleBuilder()
-                                textStyle.withTextColor(color)
-                                photoEditor.addText(input, textStyle)
-                                tvTitle.setText(R.string.label_text)
-                            }
-                        }).show(supportFragmentManager, "")
-                    }
-                    ToolType.ERASER -> {
-                        photoEditor.brushEraser()
-                        tvTitle.setText(R.string.label_eraser_mode)
-                    }
-                    ToolType.FILTER -> {
-                        tvTitle.setText(R.string.label_filter)
-                        showFilter(true)
-                    }
-                    ToolType.EMOJI -> EmojiBSDF(object : EmojiListener {
-                        override fun onEmojiSelected(emoji: String) {
-                            photoEditor.addEmoji(emoji)
-                            tvTitle.setText(R.string.label_emoji)
-                        }
-                    }).show(supportFragmentManager, "")
-                    ToolType.STICKER -> StickerBSDF(object : StickerListener {
-                        override fun onStickerSelected(bitmap: Bitmap) {
-                            photoEditor.addImage(bitmap)
-                            tvTitle.setText(R.string.label_sticker)
-                        }
-                    }).show(supportFragmentManager, "")
+        ivBrush.setOnClickListener { photoEditor.setBrushDrawingMode(true)
+            tvTitle.setText(R.string.label_brush)
+            PropertiesBSDF(object : PropertyListener {
+                override fun onColorChanged(color: Int) {
+                    photoEditor.brushColor = color
+                    tvTitle.setText(R.string.label_brush)
                 }
+
+                override fun onOpacityChanged(opacity: Int) {
+                    photoEditor.setOpacity(opacity)
+                    tvTitle.setText(R.string.label_brush)
+                }
+
+                override fun onBrushSizeChanged(brushSize: Int) {
+                    photoEditor.brushSize = brushSize.toFloat()
+                    tvTitle.setText(R.string.label_brush)
+                }
+            }).show(supportFragmentManager, "") }
+        ivText.setOnClickListener { TextEditorD(object : TextEditorListener {
+            override fun onTextDone(input: String, color: Int) {
+                val textStyle = TextStyleBuilder()
+                textStyle.withTextColor(color)
+                photoEditor.addText(input, textStyle)
+                tvTitle.setText(R.string.label_text)
             }
-        })
+        }).show(supportFragmentManager, "") }
+        ivEraser.setOnClickListener { photoEditor.brushEraser()
+            tvTitle.setText(R.string.label_eraser_mode) }
+        ivFilter.setOnClickListener { tvTitle.setText(R.string.label_filter)
+            showFilter(true) }
+        ivEmoji.setOnClickListener { EmojiBSDF(object : EmojiListener {
+            override fun onEmojiSelected(emoji: String) {
+                photoEditor.addEmoji(emoji)
+                tvTitle.setText(R.string.label_emoji)
+            }
+        }).show(supportFragmentManager, "") }
+        ivSticker.setOnClickListener { StickerBSDF(object : StickerListener {
+            override fun onStickerSelected(bitmap: Bitmap) {
+                photoEditor.addImage(bitmap)
+                tvTitle.setText(R.string.label_sticker)
+            }
+        }).show(supportFragmentManager, "") }
+
+        tvBrush.setOnClickListener { ivBrush.performClick() }
+        tvText.setOnClickListener { ivText.performClick() }
+        tvEraser.setOnClickListener { ivEraser.performClick() }
+        tvFilter.setOnClickListener { ivFilter.performClick() }
+        tvEmoji.setOnClickListener { ivEmoji.performClick() }
+        tvSticker.setOnClickListener { ivSticker.performClick() }
 
         rvFilters.layoutManager = LinearLayoutManager(applicationContext, RecyclerView.HORIZONTAL, false)
         rvFilters.adapter = FiltersAdapter(object : FilterListener {
