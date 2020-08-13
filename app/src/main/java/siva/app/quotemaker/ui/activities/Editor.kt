@@ -89,7 +89,7 @@ class Editor : AppCompatActivity(), OnPhotoEditorListener {
                     ToolType.BRUSH -> {
                         photoEditor.setBrushDrawingMode(true)
                         tvTitle.setText(R.string.label_brush)
-                        PropertiesBSDF(applicationContext, object : PropertyListener {
+                        PropertiesBSDF(object : PropertyListener {
                             override fun onColorChanged(color: Int) {
                                 photoEditor.brushColor = color
                                 tvTitle.setText(R.string.label_brush)

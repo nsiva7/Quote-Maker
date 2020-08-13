@@ -35,7 +35,6 @@ android {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            multiDexKeepProguard file('multidex-config.pro')
             buildConfigField 'boolean', 'DEBUGGING_ENABLED', 'false'
         }
     }

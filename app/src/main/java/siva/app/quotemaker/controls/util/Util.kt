@@ -45,7 +45,7 @@ class Util {
                 ExifInterface.TAG_ORIENTATION,
                 ExifInterface.ORIENTATION_UNDEFINED
             )
-            var rotatedBitmap: Bitmap? = null
+            var rotatedBitmap: Bitmap?
             rotatedBitmap = when (orientation) {
                 ExifInterface.ORIENTATION_ROTATE_90 -> rotateImage(bitmap!!, 90)
                 ExifInterface.ORIENTATION_ROTATE_180 -> rotateImage(bitmap!!, 180)
