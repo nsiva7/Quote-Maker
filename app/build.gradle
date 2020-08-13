@@ -36,6 +36,12 @@ android {
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField 'boolean', 'DEBUGGING_ENABLED', 'false'
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    def formattedDate = new Date().format('yyyyMMddHHmm')
+                    outputFileName = "Quote_Maker_"+formattedDate+".apk"
+                }
+            }
         }
     }
     lintOptions {
