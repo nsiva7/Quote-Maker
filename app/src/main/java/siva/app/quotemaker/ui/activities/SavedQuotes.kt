@@ -31,7 +31,7 @@ class SavedQuotes : AppCompatActivity() {
 
         initQuotes()
 
-        ivBack.setOnClickListener { startActivity(Intent(this, Dashboard::class.java));finish() }
+        ivBack.setOnClickListener { onBackPressed() }
 
         quotes = initQuotes()
 
@@ -71,5 +71,10 @@ class SavedQuotes : AppCompatActivity() {
             return quotesPath.listFiles { _, name -> name.endsWith(".png") }
         }
         return null
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this, Dashboard::class.java))
+        finish()
     }
 }

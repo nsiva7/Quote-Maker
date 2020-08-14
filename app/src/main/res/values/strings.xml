@@ -20,5 +20,7 @@
     <string name="noStoragePermissions">Storage Permission Not Available..!</string>
     <string name="imageSaved">Image Saved Successfully</string>
     <string name="imageSaveFailed">Failed to save Image</string>
-    <string name="not_quotes">No Quotes Available</string>>
+    <string name="not_quotes">No Quotes Available</string>
+    <string name="fontSampleText">Quote Maker Sample Text</string>
+    <string name="defaultFontLabel">Default Font</string>>
 </resources>

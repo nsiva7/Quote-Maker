@@ -3,6 +3,7 @@ package siva.app.quotemaker.ui.activities
 import android.Manifest
 import android.app.Activity
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -27,9 +28,7 @@ import ja.burhanrashid52.photoeditor.*
 import ja.burhanrashid52.photoeditor.PhotoEditor.OnSaveListener
 import kotlinx.android.synthetic.main.editor.*
 import siva.app.quotemaker.R
-import siva.app.quotemaker.controls.adapter.EditingToolsAdapter
 import siva.app.quotemaker.controls.adapter.FiltersAdapter
-import siva.app.quotemaker.controls.enums.ToolType
 import siva.app.quotemaker.controls.listeners.*
 import siva.app.quotemaker.controls.util.Util
 import siva.app.quotemaker.controls.util.Util.Companion.showSnackbar
@@ -84,7 +83,7 @@ class Editor : AppCompatActivity(), OnPhotoEditorListener {
     private fun initTools() {
         ivBrush.setOnClickListener { photoEditor.setBrushDrawingMode(true)
             tvTitle.setText(R.string.label_brush)
-            PropertiesBSDF(object : PropertyListener {
+            PropertiesBSDF(photoEditor.brushColor, photoEditor.brushSize, object : PropertyListener {
                 override fun onColorChanged(color: Int) {
                     photoEditor.brushColor = color
                     tvTitle.setText(R.string.label_brush)
@@ -92,6 +91,7 @@ class Editor : AppCompatActivity(), OnPhotoEditorListener {
 
                 override fun onOpacityChanged(opacity: Int) {
                     photoEditor.setOpacity(opacity)
+                    getSharedPreferences("QuoteMakerPrefs", Context.MODE_PRIVATE).edit().putInt("brushAlpha", opacity).apply()
                     tvTitle.setText(R.string.label_brush)
                 }
 
@@ -101,9 +101,10 @@ class Editor : AppCompatActivity(), OnPhotoEditorListener {
                 }
             }).show(supportFragmentManager, "") }
         ivText.setOnClickListener { TextEditorD(object : TextEditorListener {
-            override fun onTextDone(input: String, color: Int) {
+            override fun onTextDone(input: String, color: Int, typeface: Typeface) {
                 val textStyle = TextStyleBuilder()
                 textStyle.withTextColor(color)
+                textStyle.withTextFont(typeface)
                 photoEditor.addText(input, textStyle)
                 tvTitle.setText(R.string.label_text)
             }
@@ -195,9 +196,10 @@ class Editor : AppCompatActivity(), OnPhotoEditorListener {
 
     override fun onEditTextChangeListener(rootView: View?, text: String?, colorCode: Int) {
         TextEditorD(object : TextEditorListener {
-            override fun onTextDone(input: String, color: Int) {
+            override fun onTextDone(input: String, color: Int, typeface: Typeface) {
                 val textStyle = TextStyleBuilder()
                 textStyle.withTextColor(color)
+                textStyle.withTextFont(typeface)
                 photoEditor.addText(input, textStyle)
                 tvTitle.setText(R.string.label_text)
             }
