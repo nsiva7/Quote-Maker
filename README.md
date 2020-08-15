@@ -6,10 +6,10 @@ Quote Maker is used to create greetings, invite letters, best wishes , Quotes et
 
 Features
 -----------
-*High image resolution based on background
-*choosy background
-*Best Clip-Arts
-*Easy Controls
+*High image resolution based on background</br>
+*choosy background</br>
+*Best Clip-Arts</br>
+*Easy Controls</br>
 *Load background from gallery.
 
 Download
@@ -19,4 +19,7 @@ Download
 
 ScreenShots
 -----------
+<div style="display:flex;">
+<img alt="Quote Maker Screenshot 1" src="screenshots/Screenshot_1.png" width="30%">
+</div>
 ![Quote Maker Screenshot 1](https://github.com/nsiva7/Quote-Maker/blob/master/screenshots/Screenshot_1.png)
