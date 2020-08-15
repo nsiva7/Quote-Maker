@@ -6,11 +6,11 @@ Quote Maker is used to create greetings, invite letters, best wishes , Quotes et
 
 Features
 -----------
-*High image resolution based on background</br>
-*choosy background</br>
-*Best Clip-Arts</br>
-*Easy Controls</br>
-*Load background from gallery.
+* High image resolution based on background</br>
+* choosy background</br>
+* Best Clip-Arts</br>
+* Easy Controls</br>
+* Load background from gallery.
 
 Download
 -----------
