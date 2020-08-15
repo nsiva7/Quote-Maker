@@ -21,5 +21,11 @@ ScreenShots
 -----------
 <div style="display:flex;">
 <img alt="Quote Maker Screenshot 1" src="screenshots/Screenshot_1.png" width="30%">
+<img alt="Quote Maker Screenshot 2" src="screenshots/Screenshot_2.png" width="30%">
+<img alt="Quote Maker Screenshot 3" src="screenshots/Screenshot_3.png" width="30%">
 </div>
-![Quote Maker Screenshot 1](https://github.com/nsiva7/Quote-Maker/blob/master/screenshots/Screenshot_1.png)
+<div style="display:flex;">
+<img alt="Quote Maker Screenshot 4" src="screenshots/Screenshot_4.png" width="30%">
+<img alt="Quote Maker Screenshot 5" src="screenshots/Screenshot_5.png" width="30%">
+<img alt="Quote Maker Screenshot 6" src="screenshots/Screenshot_6.png" width="30%">
+</div>
