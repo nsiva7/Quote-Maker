@@ -32,8 +32,8 @@ android {
         release {
             debuggable false
             useProguard true
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField 'boolean', 'DEBUGGING_ENABLED', 'false'
             applicationVariants.all { variant ->
